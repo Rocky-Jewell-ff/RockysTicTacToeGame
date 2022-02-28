@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using TicTacToeLibrary.DataAccess;
 using TicTacToeLibrary.Models;
 
 namespace RockysTicTacToeGame
 {
     public partial class TicTacToeForm : Form
     {
+        private PlayerModel updatePlayer1 = SetUpForm.player1Model;
+        private PlayerModel updatePlayer2 = SetUpForm.player1Model;
+        private List<PlayerModel> dudeFigureThisOut = GlobalConfig.Connection.GetAllPlayers();
         private bool player1turn = true;
         private bool player2turn = false;
         private readonly SkillsModel player1Skills = new SkillsModel();
@@ -15,9 +20,11 @@ namespace RockysTicTacToeGame
         public TicTacToeForm()
         {
             InitializeComponent();
-            player1Label.Text = SetUpForm.playerOne;
-            player2Label.Text = SetUpForm.playerTwo;
+            player1Label.Text = SetUpForm.playerOneName;
+            player2Label.Text = SetUpForm.playerTwoName;
             amountBettingNumericUpDown.Value = SetUpForm.playersBet;
+            
+            
         }
 
         private void ClickedOnBoard(object sender, EventArgs e)
@@ -52,6 +59,7 @@ namespace RockysTicTacToeGame
         }
         private void CalculateWin()
         {
+            // TODO - Move this method to it's own class.
             int[,] win = { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } };
             int[,] board = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
             int[,] player1StartGame = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
@@ -137,6 +145,22 @@ namespace RockysTicTacToeGame
 
         private void newGameButton_Click(object sender, EventArgs e)
         {
+            foreach (PlayerModel p in dudeFigureThisOut)
+            {
+                // TODO - Add a UpdatePlayer Method instead of creating a new player!
+                if (p.DisplayName == updatePlayer1.DisplayName)
+                {
+                    p.AmountOfMoneyWon += amountBettingNumericUpDown.Value;
+                    GlobalConfig.Connection.UpdatePlayer(p);
+                }
+                if (p.DisplayName == updatePlayer2.DisplayName)
+                {
+                    p.AmountOfMoneyWon += amountBettingNumericUpDown.Value;
+                    GlobalConfig.Connection.UpdatePlayer(p);
+                }
+                
+                
+            }
             this.Close();
             /*            ClearBoard();
                         player1turn = true;

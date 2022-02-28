@@ -11,8 +11,10 @@ namespace RockysTicTacToeGame
 
         private List<PlayerModel> availablePlayers = GlobalConfig.Connection.GetAllPlayers();
         private List<PlayerModel> selectedPlayers = new List<PlayerModel>();
-        public static string playerOne = null;
-        public static string playerTwo = null;
+        public static PlayerModel player1Model = new PlayerModel();
+        public static PlayerModel player2Model = new PlayerModel();
+        public static string playerOneName = null;
+        public static string playerTwoName = null;
         public static decimal playersBet = 0;
         public SetUpForm()
         {
@@ -128,11 +130,13 @@ namespace RockysTicTacToeGame
 
                 if (count == 1)
                 {
-                    playerOne = player.Name;
+                    player1Model = player;
+                    playerOneName = player.Name;
                 }
                 if (count == 2)
                 {
-                    playerTwo = player.Name;
+                    player2Model = player;
+                    playerTwoName = player.Name;
 
                 }
             }       
