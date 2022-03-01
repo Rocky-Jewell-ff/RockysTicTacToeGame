@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.clearDataButton = new System.Windows.Forms.Button();
+            this.refreshDataButton = new System.Windows.Forms.Button();
             this.playersLabel = new System.Windows.Forms.Label();
             this.startGameButton = new System.Windows.Forms.Button();
             this.howToPlayLinkLabel = new System.Windows.Forms.LinkLabel();
@@ -43,20 +43,21 @@
             this.newPlayerNameTextBox = new System.Windows.Forms.TextBox();
             this.createNewPlayerLabel = new System.Windows.Forms.Label();
             this.addPlayerButton = new System.Windows.Forms.Button();
+            this.deleteAllDataButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.makeABetNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
-            // clearDataButton
+            // refreshDataButton
             // 
-            this.clearDataButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.clearDataButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearDataButton.Location = new System.Drawing.Point(377, 12);
-            this.clearDataButton.Name = "clearDataButton";
-            this.clearDataButton.Size = new System.Drawing.Size(95, 35);
-            this.clearDataButton.TabIndex = 27;
-            this.clearDataButton.Text = "Clear All Data";
-            this.clearDataButton.UseVisualStyleBackColor = false;
-            this.clearDataButton.Click += new System.EventHandler(this.clearDataButton_Click);
+            this.refreshDataButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.refreshDataButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshDataButton.Location = new System.Drawing.Point(223, 159);
+            this.refreshDataButton.Name = "refreshDataButton";
+            this.refreshDataButton.Size = new System.Drawing.Size(112, 35);
+            this.refreshDataButton.TabIndex = 27;
+            this.refreshDataButton.Text = "Refresh All Data";
+            this.refreshDataButton.UseVisualStyleBackColor = false;
+            this.refreshDataButton.Click += new System.EventHandler(this.refreshDataButton_Click);
             // 
             // playersLabel
             // 
@@ -201,14 +202,27 @@
             this.addPlayerButton.UseVisualStyleBackColor = true;
             this.addPlayerButton.Click += new System.EventHandler(this.addPlayerButton_Click);
             // 
+            // deleteAllDataButton
+            // 
+            this.deleteAllDataButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.deleteAllDataButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteAllDataButton.Location = new System.Drawing.Point(360, 12);
+            this.deleteAllDataButton.Name = "deleteAllDataButton";
+            this.deleteAllDataButton.Size = new System.Drawing.Size(112, 35);
+            this.deleteAllDataButton.TabIndex = 29;
+            this.deleteAllDataButton.Text = "Delete All Data";
+            this.deleteAllDataButton.UseVisualStyleBackColor = false;
+            this.deleteAllDataButton.Click += new System.EventHandler(this.deleteAllDataButton_Click);
+            // 
             // SetUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(488, 329);
+            this.Controls.Add(this.deleteAllDataButton);
             this.Controls.Add(this.addPlayerButton);
-            this.Controls.Add(this.clearDataButton);
+            this.Controls.Add(this.refreshDataButton);
             this.Controls.Add(this.playersLabel);
             this.Controls.Add(this.startGameButton);
             this.Controls.Add(this.howToPlayLinkLabel);
@@ -234,7 +248,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button clearDataButton;
+        private System.Windows.Forms.Button refreshDataButton;
         private System.Windows.Forms.Label playersLabel;
         private System.Windows.Forms.Button startGameButton;
         private System.Windows.Forms.LinkLabel howToPlayLinkLabel;
@@ -249,5 +263,6 @@
         private System.Windows.Forms.TextBox newPlayerNameTextBox;
         private System.Windows.Forms.Label createNewPlayerLabel;
         private System.Windows.Forms.Button addPlayerButton;
+        private System.Windows.Forms.Button deleteAllDataButton;
     }
 }

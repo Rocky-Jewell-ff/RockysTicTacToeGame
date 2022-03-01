@@ -16,16 +16,21 @@ namespace RockysTicTacToeGame
         public static string playerOneName = null;
         public static string playerTwoName = null;
         public static decimal playersBet = 0;
+        private const string PlayerFile = "PlayerModels.csv";
         public SetUpForm()
         {
             InitializeComponent();
-            //CreateSampleData();
             WireUpLists();
         }
 
+        /// <summary>
+        /// A button that creates a new player
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void createPlayerButton_Click(object sender, EventArgs e)
         {
-            if (ValidateForm())
+            if (ValidateNewPlayer())
             {
                 PlayerModel p = new PlayerModel();
                 p.Name = newPlayerNameTextBox.Text;
@@ -49,6 +54,10 @@ namespace RockysTicTacToeGame
 
         }
 
+
+        /// <summary>
+        /// Sample data for testing
+        /// </summary>
         private void CreateSampleData()
         {
             availablePlayers.Add(new PlayerModel { Id = 1, Name = "Rocky", WinLoseRatio = 2.4, AmountOfMoneyWon = 1234 });
@@ -57,6 +66,10 @@ namespace RockysTicTacToeGame
             selectedPlayers.Add(new PlayerModel { Id = 1, Name = "Bob", WinLoseRatio = 0.1, AmountOfMoneyWon = 4 });
         }
 
+
+        /// <summary>
+        /// Adds the datasorces to the listbox and ComboBox
+        /// </summary>
         private void WireUpLists()
         {
             choosePlayersComboBox.DataSource = null;
@@ -70,8 +83,11 @@ namespace RockysTicTacToeGame
         }
 
 
-
-        private bool ValidateForm()
+        /// <summary>
+        /// Bool that checks if a player has a valid name
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidateNewPlayer()
         {
             if (newPlayerNameTextBox.Text.Length == 0)
             {
@@ -82,6 +98,11 @@ namespace RockysTicTacToeGame
 
         }
 
+        /// <summary>
+        /// Adds the selected player to the VsingListBox and removes it from the comboBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addPlayerButton_Click(object sender, EventArgs e)
         {
             PlayerModel p = (PlayerModel)choosePlayersComboBox.SelectedItem;
@@ -97,6 +118,12 @@ namespace RockysTicTacToeGame
             }
         }
 
+
+        /// <summary>
+        /// Removes the selected player from the Listbox and adds it to the Combobox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void removePlayerButton_Click(object sender, EventArgs e)
         {
             PlayerModel p = (PlayerModel)vsingPlayersListBox.SelectedItem;
@@ -111,12 +138,22 @@ namespace RockysTicTacToeGame
             }
         }
 
-        private void clearDataButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Refreshes the Listbox and dropdown.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void refreshDataButton_Click(object sender, EventArgs e)
         {
-            // TODO - Delete all TextFiles with a push of this button. 
-            throw new NotImplementedException();
+            RefreshTheData();
+            WireUpLists();
         }
 
+        /// <summary>
+        /// Starts a new game of TicTacToe and Updates Player1 and Player2 for the TicTacToeForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void startGameButton_Click(object sender, EventArgs e)
         {
             if (CheckNumberOfPlayers())
@@ -144,6 +181,11 @@ namespace RockysTicTacToeGame
                 TicTacToeForm startgame = new TicTacToeForm();
                 startgame.ShowDialog();
         }
+
+        /// <summary>
+        /// A bool that checks the number of players in the Vsing ListBox.
+        /// </summary>
+        /// <returns></returns>
         public bool CheckNumberOfPlayers()
         {
             if (vsingPlayersListBox.Items.Count == 0)
@@ -162,6 +204,32 @@ namespace RockysTicTacToeGame
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Clears the collection of object from the vsingPlayers Listbox and refreshes
+        /// </summary>
+        private void RefreshTheData()
+        {
+            availablePlayers = GlobalConfig.Connection.GetAllPlayers();
+
+            foreach (PlayerModel p in vsingPlayersListBox.Items)
+            {
+                selectedPlayers.Remove(p);
+            }
+        }
+
+
+        /// <summary>
+        /// Deletes the PlayerFile Textfile and refreshes the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void deleteAllDataButton_Click(object sender, EventArgs e)
+        {
+            TextConnectorProcessor.DeletePlayerFile(PlayerFile);
+            RefreshTheData();
+            WireUpLists();
         }
     }
 }

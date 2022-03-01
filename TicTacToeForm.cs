@@ -10,7 +10,7 @@ namespace RockysTicTacToeGame
     public partial class TicTacToeForm : Form
     {
         private PlayerModel updatePlayer1 = SetUpForm.player1Model;
-        private PlayerModel updatePlayer2 = SetUpForm.player1Model;
+        private PlayerModel updatePlayer2 = SetUpForm.player2Model;
         private List<PlayerModel> dudeFigureThisOut = GlobalConfig.Connection.GetAllPlayers();
         private bool player1turn = true;
         private bool player2turn = false;
