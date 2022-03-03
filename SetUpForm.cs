@@ -60,10 +60,10 @@ namespace RockysTicTacToeGame
         /// </summary>
         private void CreateSampleData()
         {
-            availablePlayers.Add(new PlayerModel { Id = 1, Name = "Rocky", WinLoseRatio = 2.4, AmountOfMoneyWon = 1234 });
-            availablePlayers.Add(new PlayerModel { Id = 2, Name = "Cora", WinLoseRatio = 0.8, AmountOfMoneyWon = 231 });
+            availablePlayers.Add(new PlayerModel { Id = 1, Name = "Rocky", AmountOfMoneyWon = 1234 });
+            availablePlayers.Add(new PlayerModel { Id = 2, Name = "Cora", AmountOfMoneyWon = 231 });
 
-            selectedPlayers.Add(new PlayerModel { Id = 1, Name = "Bob", WinLoseRatio = 0.1, AmountOfMoneyWon = 4 });
+            selectedPlayers.Add(new PlayerModel { Id = 1, Name = "Bob", AmountOfMoneyWon = 4 });
         }
 
 

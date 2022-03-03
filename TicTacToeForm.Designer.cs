@@ -55,10 +55,10 @@
             this.ticTacToeBox2 = new System.Windows.Forms.PictureBox();
             this.ticTacToeBox1 = new System.Windows.Forms.PictureBox();
             this.newGameButton = new System.Windows.Forms.Button();
-            this.winLossRatioP1Label = new System.Windows.Forms.Label();
-            this.winLossRatioP1TextBox = new System.Windows.Forms.TextBox();
-            this.winLossRatioP2Label = new System.Windows.Forms.Label();
-            this.winLossRatioP2TextBox = new System.Windows.Forms.TextBox();
+            this.totalWinsP1Label = new System.Windows.Forms.Label();
+            this.totalWinsP1TextBox = new System.Windows.Forms.TextBox();
+            this.totalWinsP2Label = new System.Windows.Forms.Label();
+            this.totalWinsP2TextBox = new System.Windows.Forms.TextBox();
             this.amountBettingLabel = new System.Windows.Forms.Label();
             this.amountBettingNumericUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.player2PictureBox)).BeginInit();
@@ -373,43 +373,43 @@
             this.newGameButton.UseVisualStyleBackColor = false;
             this.newGameButton.Click += new System.EventHandler(this.newGameButton_Click);
             // 
-            // winLossRatioP1Label
+            // totalWinsP1Label
             // 
-            this.winLossRatioP1Label.AutoSize = true;
-            this.winLossRatioP1Label.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.winLossRatioP1Label.Location = new System.Drawing.Point(11, 422);
-            this.winLossRatioP1Label.Name = "winLossRatioP1Label";
-            this.winLossRatioP1Label.Size = new System.Drawing.Size(159, 30);
-            this.winLossRatioP1Label.TabIndex = 28;
-            this.winLossRatioP1Label.Text = "Win Loss Ratio";
+            this.totalWinsP1Label.AutoSize = true;
+            this.totalWinsP1Label.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalWinsP1Label.Location = new System.Drawing.Point(33, 422);
+            this.totalWinsP1Label.Name = "totalWinsP1Label";
+            this.totalWinsP1Label.Size = new System.Drawing.Size(116, 30);
+            this.totalWinsP1Label.TabIndex = 28;
+            this.totalWinsP1Label.Text = "Total Wins";
             // 
-            // winLossRatioP1TextBox
+            // totalWinsP1TextBox
             // 
-            this.winLossRatioP1TextBox.Enabled = false;
-            this.winLossRatioP1TextBox.Location = new System.Drawing.Point(12, 455);
-            this.winLossRatioP1TextBox.Name = "winLossRatioP1TextBox";
-            this.winLossRatioP1TextBox.Size = new System.Drawing.Size(159, 29);
-            this.winLossRatioP1TextBox.TabIndex = 27;
-            this.winLossRatioP1TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.totalWinsP1TextBox.Enabled = false;
+            this.totalWinsP1TextBox.Location = new System.Drawing.Point(12, 455);
+            this.totalWinsP1TextBox.Name = "totalWinsP1TextBox";
+            this.totalWinsP1TextBox.Size = new System.Drawing.Size(159, 29);
+            this.totalWinsP1TextBox.TabIndex = 27;
+            this.totalWinsP1TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // winLossRatioP2Label
+            // totalWinsP2Label
             // 
-            this.winLossRatioP2Label.AutoSize = true;
-            this.winLossRatioP2Label.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.winLossRatioP2Label.Location = new System.Drawing.Point(545, 422);
-            this.winLossRatioP2Label.Name = "winLossRatioP2Label";
-            this.winLossRatioP2Label.Size = new System.Drawing.Size(159, 30);
-            this.winLossRatioP2Label.TabIndex = 30;
-            this.winLossRatioP2Label.Text = "Win Loss Ratio";
+            this.totalWinsP2Label.AutoSize = true;
+            this.totalWinsP2Label.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalWinsP2Label.Location = new System.Drawing.Point(567, 422);
+            this.totalWinsP2Label.Name = "totalWinsP2Label";
+            this.totalWinsP2Label.Size = new System.Drawing.Size(116, 30);
+            this.totalWinsP2Label.TabIndex = 30;
+            this.totalWinsP2Label.Text = "Total Wins";
             // 
-            // winLossRatioP2TextBox
+            // totalWinsP2TextBox
             // 
-            this.winLossRatioP2TextBox.Enabled = false;
-            this.winLossRatioP2TextBox.Location = new System.Drawing.Point(546, 455);
-            this.winLossRatioP2TextBox.Name = "winLossRatioP2TextBox";
-            this.winLossRatioP2TextBox.Size = new System.Drawing.Size(159, 29);
-            this.winLossRatioP2TextBox.TabIndex = 29;
-            this.winLossRatioP2TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.totalWinsP2TextBox.Enabled = false;
+            this.totalWinsP2TextBox.Location = new System.Drawing.Point(546, 455);
+            this.totalWinsP2TextBox.Name = "totalWinsP2TextBox";
+            this.totalWinsP2TextBox.Size = new System.Drawing.Size(159, 29);
+            this.totalWinsP2TextBox.TabIndex = 29;
+            this.totalWinsP2TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // amountBettingLabel
             // 
@@ -448,10 +448,10 @@
             this.ClientSize = new System.Drawing.Size(739, 520);
             this.Controls.Add(this.amountBettingNumericUpDown);
             this.Controls.Add(this.amountBettingLabel);
-            this.Controls.Add(this.winLossRatioP2Label);
-            this.Controls.Add(this.winLossRatioP2TextBox);
-            this.Controls.Add(this.winLossRatioP1Label);
-            this.Controls.Add(this.winLossRatioP1TextBox);
+            this.Controls.Add(this.totalWinsP2Label);
+            this.Controls.Add(this.totalWinsP2TextBox);
+            this.Controls.Add(this.totalWinsP1Label);
+            this.Controls.Add(this.totalWinsP1TextBox);
             this.Controls.Add(this.newGameButton);
             this.Controls.Add(this.player2PictureBox);
             this.Controls.Add(this.player1PictureBox);
@@ -531,10 +531,10 @@
         private System.Windows.Forms.PictureBox player1PictureBox;
         private System.Windows.Forms.PictureBox player2PictureBox;
         private System.Windows.Forms.Button newGameButton;
-        private System.Windows.Forms.Label winLossRatioP1Label;
-        private System.Windows.Forms.TextBox winLossRatioP1TextBox;
-        private System.Windows.Forms.Label winLossRatioP2Label;
-        private System.Windows.Forms.TextBox winLossRatioP2TextBox;
+        private System.Windows.Forms.Label totalWinsP1Label;
+        private System.Windows.Forms.TextBox totalWinsP1TextBox;
+        private System.Windows.Forms.Label totalWinsP2Label;
+        private System.Windows.Forms.TextBox totalWinsP2TextBox;
         private System.Windows.Forms.Label amountBettingLabel;
         private System.Windows.Forms.NumericUpDown amountBettingNumericUpDown;
     }
