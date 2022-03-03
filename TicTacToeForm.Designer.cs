@@ -88,6 +88,7 @@
             // player1Label
             // 
             this.player1Label.AutoSize = true;
+            this.player1Label.BackColor = System.Drawing.Color.LightGreen;
             this.player1Label.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.player1Label.Location = new System.Drawing.Point(53, 19);
             this.player1Label.Name = "player1Label";
