@@ -35,8 +35,6 @@
             this.backToBackP1Button = new System.Windows.Forms.Button();
             this.overRideP1Button = new System.Windows.Forms.Button();
             this.clearBoardP1Button = new System.Windows.Forms.Button();
-            this.moveTheirPieceP1Button = new System.Windows.Forms.Button();
-            this.moveTheirPieceP2Button = new System.Windows.Forms.Button();
             this.clearBoardP2Button = new System.Windows.Forms.Button();
             this.overRideP2Button = new System.Windows.Forms.Button();
             this.backToBackP2Button = new System.Windows.Forms.Button();
@@ -141,26 +139,6 @@
             this.clearBoardP1Button.TabIndex = 15;
             this.clearBoardP1Button.Text = "Clear Board";
             this.clearBoardP1Button.UseVisualStyleBackColor = true;
-            // 
-            // moveTheirPieceP1Button
-            // 
-            this.moveTheirPieceP1Button.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.moveTheirPieceP1Button.Location = new System.Drawing.Point(29, 380);
-            this.moveTheirPieceP1Button.Name = "moveTheirPieceP1Button";
-            this.moveTheirPieceP1Button.Size = new System.Drawing.Size(124, 32);
-            this.moveTheirPieceP1Button.TabIndex = 16;
-            this.moveTheirPieceP1Button.Text = "Move Their Piece";
-            this.moveTheirPieceP1Button.UseVisualStyleBackColor = true;
-            // 
-            // moveTheirPieceP2Button
-            // 
-            this.moveTheirPieceP2Button.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.moveTheirPieceP2Button.Location = new System.Drawing.Point(563, 380);
-            this.moveTheirPieceP2Button.Name = "moveTheirPieceP2Button";
-            this.moveTheirPieceP2Button.Size = new System.Drawing.Size(124, 32);
-            this.moveTheirPieceP2Button.TabIndex = 23;
-            this.moveTheirPieceP2Button.Text = "Move Their Piece";
-            this.moveTheirPieceP2Button.UseVisualStyleBackColor = true;
             // 
             // clearBoardP2Button
             // 
@@ -377,7 +355,7 @@
             // 
             this.totalWinsP1Label.AutoSize = true;
             this.totalWinsP1Label.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalWinsP1Label.Location = new System.Drawing.Point(33, 422);
+            this.totalWinsP1Label.Location = new System.Drawing.Point(37, 401);
             this.totalWinsP1Label.Name = "totalWinsP1Label";
             this.totalWinsP1Label.Size = new System.Drawing.Size(116, 30);
             this.totalWinsP1Label.TabIndex = 28;
@@ -386,7 +364,7 @@
             // totalWinsP1TextBox
             // 
             this.totalWinsP1TextBox.Enabled = false;
-            this.totalWinsP1TextBox.Location = new System.Drawing.Point(12, 455);
+            this.totalWinsP1TextBox.Location = new System.Drawing.Point(16, 434);
             this.totalWinsP1TextBox.Name = "totalWinsP1TextBox";
             this.totalWinsP1TextBox.Size = new System.Drawing.Size(159, 29);
             this.totalWinsP1TextBox.TabIndex = 27;
@@ -396,7 +374,7 @@
             // 
             this.totalWinsP2Label.AutoSize = true;
             this.totalWinsP2Label.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalWinsP2Label.Location = new System.Drawing.Point(567, 422);
+            this.totalWinsP2Label.Location = new System.Drawing.Point(571, 401);
             this.totalWinsP2Label.Name = "totalWinsP2Label";
             this.totalWinsP2Label.Size = new System.Drawing.Size(116, 30);
             this.totalWinsP2Label.TabIndex = 30;
@@ -405,7 +383,7 @@
             // totalWinsP2TextBox
             // 
             this.totalWinsP2TextBox.Enabled = false;
-            this.totalWinsP2TextBox.Location = new System.Drawing.Point(546, 455);
+            this.totalWinsP2TextBox.Location = new System.Drawing.Point(550, 434);
             this.totalWinsP2TextBox.Name = "totalWinsP2TextBox";
             this.totalWinsP2TextBox.Size = new System.Drawing.Size(159, 29);
             this.totalWinsP2TextBox.TabIndex = 29;
@@ -455,14 +433,12 @@
             this.Controls.Add(this.newGameButton);
             this.Controls.Add(this.player2PictureBox);
             this.Controls.Add(this.player1PictureBox);
-            this.Controls.Add(this.moveTheirPieceP2Button);
             this.Controls.Add(this.clearBoardP2Button);
             this.Controls.Add(this.overRideP2Button);
             this.Controls.Add(this.backToBackP2Button);
             this.Controls.Add(this.totalWinningsP2Label);
             this.Controls.Add(this.totalWinningsP2TextBox);
             this.Controls.Add(this.player2Label);
-            this.Controls.Add(this.moveTheirPieceP1Button);
             this.Controls.Add(this.clearBoardP1Button);
             this.Controls.Add(this.overRideP1Button);
             this.Controls.Add(this.backToBackP1Button);
@@ -520,8 +496,6 @@
         private System.Windows.Forms.Button backToBackP1Button;
         private System.Windows.Forms.Button overRideP1Button;
         private System.Windows.Forms.Button clearBoardP1Button;
-        private System.Windows.Forms.Button moveTheirPieceP1Button;
-        private System.Windows.Forms.Button moveTheirPieceP2Button;
         private System.Windows.Forms.Button clearBoardP2Button;
         private System.Windows.Forms.Button overRideP2Button;
         private System.Windows.Forms.Button backToBackP2Button;

@@ -9,6 +9,8 @@ namespace RockysTicTacToeGame
 {
     public partial class TicTacToeForm : Form
     {
+        private int countScoreBest2of3_P1 = 0;
+        private int countScoreBest2of3_P2 = 0;
         private PlayerModel updatePlayer1 = SetUpForm.player1Model;
         private PlayerModel updatePlayer2 = SetUpForm.player2Model;
         private List<PlayerModel> dudeFigureThisOut = GlobalConfig.Connection.GetAllPlayers();
@@ -24,7 +26,7 @@ namespace RockysTicTacToeGame
         public TicTacToeForm()
         {
             InitializeComponent();
-            
+
             player1Label.Text = SetUpForm.playerOneName;
             player2Label.Text = SetUpForm.playerTwoName;
             amountBettingNumericUpDown.Value = SetUpForm.playersBet;
@@ -38,6 +40,7 @@ namespace RockysTicTacToeGame
 
         private void ClickedOnBoard(object sender, EventArgs e)
         {
+
             PictureBox p = sender as PictureBox;
             if (p.Image != null)
             {
@@ -49,7 +52,8 @@ namespace RockysTicTacToeGame
                 p.Image = player1PictureBox.Image;
                 PlayerTurnFunction();
                 UpdateScoreBoard();
-                FigureOutAWinWithSwitchs();
+                //FigureOutAWinWithSwitchs();
+                DotProductForTheWin();
                 return;
             }
 
@@ -58,7 +62,8 @@ namespace RockysTicTacToeGame
                 p.Image = player2PictureBox.Image;
                 PlayerTurnFunction();
                 UpdateScoreBoard();
-                FigureOutAWinWithSwitchs();
+                //FigureOutAWinWithSwitchs();
+                DotProductForTheWin();
                 return;
             }
         }
@@ -70,14 +75,14 @@ namespace RockysTicTacToeGame
          {
                 {ticTacToeBox7, ticTacToeBox8, ticTacToeBox9 },
                 { ticTacToeBox4, ticTacToeBox5, ticTacToeBox6 },
-                { ticTacToeBox1, ticTacToeBox2, ticTacToeBox3 } 
+                { ticTacToeBox1, ticTacToeBox2, ticTacToeBox3 }
             };
             for (int i = 0; i <= 2; i++)
             {
 
-                if (boxes[i,j].Image == player1PictureBox.Image)
+                if (boxes[i, j].Image == player1PictureBox.Image)
                 {
-                    player1StartGameScore[i,j] = 1;
+                    player1StartGameScore[i, j] = 1;
 
                 }
                 if (boxes[i, j].Image == player2PictureBox.Image)
@@ -88,7 +93,7 @@ namespace RockysTicTacToeGame
                 if (i == 2)
                 {
                     j++;
-                    i=-1;
+                    i = -1;
                     if (j == 3)
                     {
                         return;
@@ -165,13 +170,144 @@ namespace RockysTicTacToeGame
 
         private void newGameButton_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        /// <summary>
+        /// This is the Message Box popup if a win case is hit while using WinMessageBoxForDotProductWin.
+        /// </summary>
+        private void WinMessageBoxForDotProductWin()
+        {
+            if (!player1Turn)
+            {
+                countScoreBest2of3_P1++;
+                if (countScoreBest2of3_P1 == 2)
+                {
+                    MessageBox.Show($"{player1Label.Text} Wins!");
+                    UpdateThePlayerModelDataBetter(updatePlayer1);
+                    this.Close();
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show($"{player1Label.Text} Wins that round! \n\n{player1Label.Text}'s Score: {countScoreBest2of3_P1} vs {player2Label.Text}'s Score: {countScoreBest2of3_P2}");
+                    ClearBoard();
+
+                    return;
+                }
+            }
+            else
+            {
+                countScoreBest2of3_P2++;
+                if (countScoreBest2of3_P2 == 2)
+                {
+                    MessageBox.Show($"{player2Label.Text} Wins!");
+                    UpdateThePlayerModelDataBetter(updatePlayer2);
+                    this.Close();
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show($"{player2Label.Text} Wins that round! \n\n{player1Label.Text}'s Score {countScoreBest2of3_P1} vs {player2Label.Text}'s Score:{countScoreBest2of3_P2}");
+                    ClearBoard();
+
+                    return;
+                }
+            }
+
+        }
+        
+        
+        /// <summary>
+        /// Work in progress to a soluiton that would solve any size matrix. That Currently works for a 3x3.
+        /// </summary>
+        private void DotProductForTheWin()
+        {
+            UpdateScoreBoard();
+            // if this (1 x 3) matrixs cycels its 0's to 1's and we do the dot product on WinMatrix if the output ever equals 3 win?????????
+            int[] IdentityMatrix = { 1, 1, 1 };
+            int[,] playerGameScore = new int[3, 3];
+            if (!player1Turn)
+            {
+                playerGameScore = player1StartGameScore;
+            }
+            else
+            {
+                playerGameScore = player2StartGameScore;
+            }
+            for (int i = 0; i < IdentityMatrix.Length; i++)
+            {
+                int[] winHor = { 0, 0, 0 };
+                int[] winVert = { 0, 0, 0 };
+                int[] winDiagLeft = { 0, 0, 0 };
+                int[] winDiagRight = { 0, 0, 0 };
+
+                // Clean this up with one more for loop for the j's
+
+                winDiagRight[0] = IdentityMatrix[i] * playerGameScore[0, 2];
+                winDiagRight[1] = IdentityMatrix[i] * playerGameScore[1, 1];
+                winDiagRight[2] = IdentityMatrix[i] * playerGameScore[2, 0];
+
+                for (int j = 0; j < IdentityMatrix.Length; j++)
+                {
+                    winDiagLeft[j] = IdentityMatrix[i] * playerGameScore[j, j];
+
+                    winHor[j] = IdentityMatrix[i] * playerGameScore[i, j];
+                    winVert[j] = IdentityMatrix[i] * playerGameScore[j, i];
+                }
+
+                //winDiagLeft[1] = IdentityMatrix[i] * playerGameScore[j, j];
+                //winDiagRight[1] = IdentityMatrix[i] * playerGameScore[1,1];// Hard Coded need to comeback to this
+                //winHor[1] = IdentityMatrix[i] * playerGameScore[i, j];
+                //winVert[1] = IdentityMatrix[i] * playerGameScore[j, i];
+                //j++;
+
+                //winDiagLeft[2] = IdentityMatrix[i] * playerGameScore[j, j];
+                //winDiagRight[2] = IdentityMatrix[i] * playerGameScore[2, 0];// HardCoded Need to comeback to this
+                //winHor[2] = IdentityMatrix[i] * playerGameScore[i, j];
+                //winVert[2] = IdentityMatrix[i] * playerGameScore[j, i];
+
+                int horizontalWin = winHor[0] + winHor[1] + winHor[2];
+                int verticalWin = winVert[0] + winVert[1] + winVert[2];
+                int diagonalWinLeft = winDiagLeft[0] + winDiagLeft[1] + winDiagLeft[2];
+                int diagonalWinRight = winDiagRight[0] + winDiagRight[1] + winDiagRight[2];
+
+                if (diagonalWinRight == 3 || diagonalWinLeft == 3 || horizontalWin == 3 || verticalWin == 3)
+                {
+                    WinMessageBoxForDotProductWin();
+                    return;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Updates the player model the better way!
+        /// </summary>
+        private void UpdateThePlayerModelDataBetter(PlayerModel p)
+        {
+            p.Wins++;
+            p.GamesPlayed++;
+            p.AmountOfMoneyWon += amountBettingNumericUpDown.Value;
+            p.WinLoseRatio = p.Wins / p.GamesPlayed;
+            GlobalConfig.Connection.UpdatePlayer(p);
+        }
+
+
+
+
+
+
+        #region Not Actually using these methods anymore but I don't want to delete them yet.
+        private void UpdateThePlayerModelData()
+        {
             foreach (PlayerModel p in dudeFigureThisOut)
             {
                 // TODO - Add a UpdatePlayer Method instead of creating a new player!
                 if (p.DisplayName == updatePlayer1.DisplayName)
                 {
                     //TODO - if Player 1 wins --  p.Wins++, p.AmountOfMoneyWon += amountBettingNumericUpDown.Value;
-                    p.Wins ++;
+                    p.Wins++;
                     p.GamesPlayed++;
                     p.AmountOfMoneyWon += amountBettingNumericUpDown.Value;
                     p.WinLoseRatio = p.Wins / p.GamesPlayed;
@@ -180,20 +316,20 @@ namespace RockysTicTacToeGame
                 if (p.DisplayName == updatePlayer2.DisplayName)
                 {
                     //TODO - if Player 2 wins --  p.Wins++, p.AmountOfMoneyWon += amountBettingNumericUpDown.Value;
-                    p.Wins ++;
-                    p.GamesPlayed ++;
+                    p.Wins++;
+                    p.GamesPlayed++;
                     p.WinLoseRatio = p.Wins / p.GamesPlayed;
                     p.AmountOfMoneyWon += amountBettingNumericUpDown.Value;
                     GlobalConfig.Connection.UpdatePlayer(p);
                 }
-                
-                
+
             }
-            this.Close();
-
-
         }
 
+
+        /// <summary>
+        /// Every Win case Hard Coded!
+        /// </summary>
         private void FigureOutAWinWithSwitchs()
         {
             for (int winner = 0; winner <= 7; winner++)
@@ -204,108 +340,89 @@ namespace RockysTicTacToeGame
 
                         int p1X123 = player1StartGameScore[0, 0] + player1StartGameScore[0, 1] + player1StartGameScore[0, 2];
                         int p2X123 = player2StartGameScore[0, 0] + player2StartGameScore[0, 1] + player2StartGameScore[0, 2];
-                        
-                        WinMessageBox(p1X123, p2X123);
-                        
+
+                        WinMessageBoxForSwitchWin(p1X123, p2X123);
+
                         break;
 
                     case 1:
 
                         int p1X456 = player1StartGameScore[1, 0] + player1StartGameScore[1, 1] + player1StartGameScore[1, 2];
                         int p2X456 = player2StartGameScore[1, 0] + player2StartGameScore[1, 1] + player2StartGameScore[1, 2];
-                        
-                        WinMessageBox(p1X456, p2X456);
-                        
+
+                        WinMessageBoxForSwitchWin(p1X456, p2X456);
+
                         break;
                     case 2:
 
                         int p1X789 = player1StartGameScore[2, 0] + player1StartGameScore[2, 1] + player1StartGameScore[2, 2];
                         int p2X789 = player2StartGameScore[2, 0] + player2StartGameScore[2, 1] + player2StartGameScore[2, 2];
-                        
-                        WinMessageBox(p1X789, p2X789);
-                        
+
+                        WinMessageBoxForSwitchWin(p1X789, p2X789);
+
                         break;
-                    case 3:                        
+                    case 3:
 
                         int p1X741 = player1StartGameScore[0, 0] + player1StartGameScore[1, 0] + player1StartGameScore[2, 0];
                         int p2X741 = player2StartGameScore[0, 0] + player2StartGameScore[1, 0] + player2StartGameScore[2, 0];
-                        
-                        WinMessageBox(p1X741, p2X741);
-                        
+
+                        WinMessageBoxForSwitchWin(p1X741, p2X741);
+
                         break;
                     case 4:
 
                         int p1X852 = player1StartGameScore[0, 1] + player1StartGameScore[1, 1] + player1StartGameScore[2, 1];
                         int p2X852 = player2StartGameScore[0, 1] + player2StartGameScore[1, 1] + player2StartGameScore[2, 1];
-                        
-                        WinMessageBox(p1X852, p2X852);
-                        
+
+                        WinMessageBoxForSwitchWin(p1X852, p2X852);
+
                         break;
                     case 5:
                         int p1X963 = player1StartGameScore[0, 2] + player1StartGameScore[1, 2] + player1StartGameScore[2, 2];
-                        int p2X963 = player2StartGameScore[0, 2] + player2StartGameScore[1, 2] + player2StartGameScore[2, 2];                        
-                        WinMessageBox(p1X963, p2X963);                       
+                        int p2X963 = player2StartGameScore[0, 2] + player2StartGameScore[1, 2] + player2StartGameScore[2, 2];
+                        WinMessageBoxForSwitchWin(p1X963, p2X963);
                         break;
 
                     case 6:
                         int p1X753 = player1StartGameScore[0, 0] + player1StartGameScore[1, 1] + player1StartGameScore[2, 2];
                         int p2X753 = player2StartGameScore[0, 0] + player2StartGameScore[1, 1] + player2StartGameScore[2, 2];
-                        WinMessageBox(p1X753, p2X753);
+                        WinMessageBoxForSwitchWin(p1X753, p2X753);
                         break;
 
                     case 7:
 
                         int p1X951 = player1StartGameScore[0, 2] + player1StartGameScore[1, 1] + player1StartGameScore[2, 0];
                         int p2X951 = player2StartGameScore[0, 2] + player2StartGameScore[1, 1] + player2StartGameScore[2, 0];
-                        WinMessageBox(p1X951, p2X951);
+                        WinMessageBoxForSwitchWin(p1X951, p2X951);
                         break;
 
                 }
             }
         }
-        private void WinMessageBox(int xP1, int xP2)
+
+
+        /// <summary>
+        /// This is the Message Box popup if a win case is hit while using FigureOutAWinWithSwitches.
+        /// </summary>
+        /// <param name="xP1">This is the variable Player1s score is stored</param>
+        /// <param name="xP2">This is the variable Player2s score is stored</param>
+        private void WinMessageBoxForSwitchWin(int xP1, int xP2)
         {
             if (xP1 == 3 || xP2 == 3)
             {
                 if (xP1 == 3)
                 {
                     MessageBox.Show($"{player1Label.Text} Wins!");
+                    return;
                 }
                 else
                 {
                     MessageBox.Show($"{player2Label.Text} Wins!");
-                } 
+                    return;
+                }
             }
         }
 
-        private void DotProductForTheWin()
-        {
-            UpdateScoreBoard();
-            int i = 0;
-            int j = 0;
-            // if this (1 x 8) matrixs cycels its 0's to 1's and we do the dot product on WinMatrix if the output ever equals 3 win?????????
-            int[] IdentityMatrix = { 0, 0, 0, 0, 0, 0, 0, 0 };
-            int[,] WinMatrix = { {1, 2, 3 },{ 4, 5, 6 }, { 7, 8, 9 }, { 1, 4, 7 }, { 2,5,8 }, {3,6,9}, { 3,5,7 }, { 1,5,9 } };
-            for (i = 0;  i < IdentityMatrix.Length; i++)
-            {
-                Array.Clear(IdentityMatrix,0,IdentityMatrix.Length);
-                IdentityMatrix[i] = 1;
-                int[] win = { 0, 0, 0 };
-                win[0] = IdentityMatrix[i] * WinMatrix[j, i];
-                j = 1;
-                win[1] = IdentityMatrix[i] * WinMatrix[j, i];
-                j=2;
-                win[2] = IdentityMatrix[i] * WinMatrix[j, i];
-                Array.IndexOf(WinMatrix, i);
-                j = 0;
-                if (win[i] == Array.IndexOf(WinMatrix,i))
-                {
-                    //AHHHHH RAWRRRRRR!
-                }
-                // TODO - Come back to this...
-            }
-            player1StartGameScore[i, j] = 0;
-            player2StartGameScore[i, j] = 0;
-        }
+        #endregion
     }
 }
