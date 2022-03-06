@@ -63,6 +63,16 @@ namespace RockysTicTacToeGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap butt_rubbing_keyboard {
+            get {
+                object obj = ResourceManager.GetObject("butt-rubbing-keyboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Clear_Board {
             get {
                 object obj = ResourceManager.GetObject("Clear Board", resourceCulture);

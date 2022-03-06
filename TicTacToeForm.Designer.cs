@@ -41,6 +41,13 @@
             this.totalWinningsP2Label = new System.Windows.Forms.Label();
             this.totalWinningsP2TextBox = new System.Windows.Forms.TextBox();
             this.player2Label = new System.Windows.Forms.Label();
+            this.newGameButton = new System.Windows.Forms.Button();
+            this.totalWinsP1Label = new System.Windows.Forms.Label();
+            this.totalWinsP1TextBox = new System.Windows.Forms.TextBox();
+            this.totalWinsP2Label = new System.Windows.Forms.Label();
+            this.totalWinsP2TextBox = new System.Windows.Forms.TextBox();
+            this.amountBettingLabel = new System.Windows.Forms.Label();
+            this.amountBettingNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.player2PictureBox = new System.Windows.Forms.PictureBox();
             this.player1PictureBox = new System.Windows.Forms.PictureBox();
             this.ticTacToeBox7 = new System.Windows.Forms.PictureBox();
@@ -52,13 +59,7 @@
             this.ticTacToeBox3 = new System.Windows.Forms.PictureBox();
             this.ticTacToeBox2 = new System.Windows.Forms.PictureBox();
             this.ticTacToeBox1 = new System.Windows.Forms.PictureBox();
-            this.newGameButton = new System.Windows.Forms.Button();
-            this.totalWinsP1Label = new System.Windows.Forms.Label();
-            this.totalWinsP1TextBox = new System.Windows.Forms.TextBox();
-            this.totalWinsP2Label = new System.Windows.Forms.Label();
-            this.totalWinsP2TextBox = new System.Windows.Forms.TextBox();
-            this.amountBettingLabel = new System.Windows.Forms.Label();
-            this.amountBettingNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.amountBettingNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticTacToeBox7)).BeginInit();
@@ -70,7 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ticTacToeBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticTacToeBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticTacToeBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.amountBettingNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // ticTacToePluslabel
@@ -121,6 +121,7 @@
             this.backToBackP1Button.TabIndex = 13;
             this.backToBackP1Button.Text = "Back to Back";
             this.backToBackP1Button.UseVisualStyleBackColor = true;
+            this.backToBackP1Button.Click += new System.EventHandler(this.backToBackP1Button_Click);
             // 
             // overRideP1Button
             // 
@@ -130,6 +131,7 @@
             this.overRideP1Button.TabIndex = 14;
             this.overRideP1Button.Text = "Over Ride";
             this.overRideP1Button.UseVisualStyleBackColor = true;
+            this.overRideP1Button.Click += new System.EventHandler(this.overRideP1Button_Click);
             // 
             // clearBoardP1Button
             // 
@@ -139,6 +141,7 @@
             this.clearBoardP1Button.TabIndex = 15;
             this.clearBoardP1Button.Text = "Clear Board";
             this.clearBoardP1Button.UseVisualStyleBackColor = true;
+            this.clearBoardP1Button.Click += new System.EventHandler(this.clearBoardP1Button_Click);
             // 
             // clearBoardP2Button
             // 
@@ -158,6 +161,7 @@
             this.overRideP2Button.TabIndex = 21;
             this.overRideP2Button.Text = "Over Ride";
             this.overRideP2Button.UseVisualStyleBackColor = true;
+            this.overRideP2Button.Click += new System.EventHandler(this.overRideP2Button_Click);
             // 
             // backToBackP2Button
             // 
@@ -167,6 +171,7 @@
             this.backToBackP2Button.TabIndex = 20;
             this.backToBackP2Button.Text = "Back to Back";
             this.backToBackP2Button.UseVisualStyleBackColor = true;
+            this.backToBackP2Button.Click += new System.EventHandler(this.backToBackP2Button_Click);
             // 
             // totalWinningsP2Label
             // 
@@ -196,149 +201,6 @@
             this.player2Label.Size = new System.Drawing.Size(91, 30);
             this.player2Label.TabIndex = 17;
             this.player2Label.Text = "Player 2";
-            // 
-            // player2PictureBox
-            // 
-            this.player2PictureBox.BackColor = System.Drawing.Color.Snow;
-            this.player2PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.player2PictureBox.Image = global::RockysTicTacToeGame.Properties.Resources.Vector;
-            this.player2PictureBox.Location = new System.Drawing.Point(579, 65);
-            this.player2PictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.player2PictureBox.Name = "player2PictureBox";
-            this.player2PictureBox.Size = new System.Drawing.Size(95, 102);
-            this.player2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.player2PictureBox.TabIndex = 25;
-            this.player2PictureBox.TabStop = false;
-            // 
-            // player1PictureBox
-            // 
-            this.player1PictureBox.BackColor = System.Drawing.Color.Snow;
-            this.player1PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.player1PictureBox.Image = global::RockysTicTacToeGame.Properties.Resources.Gru;
-            this.player1PictureBox.Location = new System.Drawing.Point(48, 65);
-            this.player1PictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.player1PictureBox.Name = "player1PictureBox";
-            this.player1PictureBox.Size = new System.Drawing.Size(95, 102);
-            this.player1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.player1PictureBox.TabIndex = 24;
-            this.player1PictureBox.TabStop = false;
-            // 
-            // ticTacToeBox7
-            // 
-            this.ticTacToeBox7.BackColor = System.Drawing.Color.Snow;
-            this.ticTacToeBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ticTacToeBox7.Location = new System.Drawing.Point(208, 65);
-            this.ticTacToeBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ticTacToeBox7.Name = "ticTacToeBox7";
-            this.ticTacToeBox7.Size = new System.Drawing.Size(95, 102);
-            this.ticTacToeBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ticTacToeBox7.TabIndex = 8;
-            this.ticTacToeBox7.TabStop = false;
-            this.ticTacToeBox7.Click += new System.EventHandler(this.ClickedOnBoard);
-            // 
-            // ticTacToeBox8
-            // 
-            this.ticTacToeBox8.BackColor = System.Drawing.Color.Snow;
-            this.ticTacToeBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ticTacToeBox8.Location = new System.Drawing.Point(313, 65);
-            this.ticTacToeBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ticTacToeBox8.Name = "ticTacToeBox8";
-            this.ticTacToeBox8.Size = new System.Drawing.Size(95, 102);
-            this.ticTacToeBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ticTacToeBox8.TabIndex = 7;
-            this.ticTacToeBox8.TabStop = false;
-            this.ticTacToeBox8.Click += new System.EventHandler(this.ClickedOnBoard);
-            // 
-            // ticTacToeBox9
-            // 
-            this.ticTacToeBox9.BackColor = System.Drawing.Color.Snow;
-            this.ticTacToeBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ticTacToeBox9.Location = new System.Drawing.Point(418, 65);
-            this.ticTacToeBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ticTacToeBox9.Name = "ticTacToeBox9";
-            this.ticTacToeBox9.Size = new System.Drawing.Size(95, 102);
-            this.ticTacToeBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ticTacToeBox9.TabIndex = 6;
-            this.ticTacToeBox9.TabStop = false;
-            this.ticTacToeBox9.Click += new System.EventHandler(this.ClickedOnBoard);
-            // 
-            // ticTacToeBox4
-            // 
-            this.ticTacToeBox4.BackColor = System.Drawing.Color.Snow;
-            this.ticTacToeBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ticTacToeBox4.Location = new System.Drawing.Point(208, 178);
-            this.ticTacToeBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ticTacToeBox4.Name = "ticTacToeBox4";
-            this.ticTacToeBox4.Size = new System.Drawing.Size(95, 102);
-            this.ticTacToeBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ticTacToeBox4.TabIndex = 5;
-            this.ticTacToeBox4.TabStop = false;
-            this.ticTacToeBox4.Click += new System.EventHandler(this.ClickedOnBoard);
-            // 
-            // ticTacToeBox5
-            // 
-            this.ticTacToeBox5.BackColor = System.Drawing.Color.Snow;
-            this.ticTacToeBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ticTacToeBox5.Location = new System.Drawing.Point(313, 178);
-            this.ticTacToeBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ticTacToeBox5.Name = "ticTacToeBox5";
-            this.ticTacToeBox5.Size = new System.Drawing.Size(95, 102);
-            this.ticTacToeBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ticTacToeBox5.TabIndex = 4;
-            this.ticTacToeBox5.TabStop = false;
-            this.ticTacToeBox5.Click += new System.EventHandler(this.ClickedOnBoard);
-            // 
-            // ticTacToeBox6
-            // 
-            this.ticTacToeBox6.BackColor = System.Drawing.Color.Snow;
-            this.ticTacToeBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ticTacToeBox6.Location = new System.Drawing.Point(418, 178);
-            this.ticTacToeBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ticTacToeBox6.Name = "ticTacToeBox6";
-            this.ticTacToeBox6.Size = new System.Drawing.Size(95, 102);
-            this.ticTacToeBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ticTacToeBox6.TabIndex = 3;
-            this.ticTacToeBox6.TabStop = false;
-            this.ticTacToeBox6.Click += new System.EventHandler(this.ClickedOnBoard);
-            // 
-            // ticTacToeBox3
-            // 
-            this.ticTacToeBox3.BackColor = System.Drawing.Color.Snow;
-            this.ticTacToeBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ticTacToeBox3.Location = new System.Drawing.Point(418, 291);
-            this.ticTacToeBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ticTacToeBox3.Name = "ticTacToeBox3";
-            this.ticTacToeBox3.Size = new System.Drawing.Size(95, 102);
-            this.ticTacToeBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ticTacToeBox3.TabIndex = 2;
-            this.ticTacToeBox3.TabStop = false;
-            this.ticTacToeBox3.Click += new System.EventHandler(this.ClickedOnBoard);
-            // 
-            // ticTacToeBox2
-            // 
-            this.ticTacToeBox2.BackColor = System.Drawing.Color.Snow;
-            this.ticTacToeBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ticTacToeBox2.Location = new System.Drawing.Point(313, 291);
-            this.ticTacToeBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ticTacToeBox2.Name = "ticTacToeBox2";
-            this.ticTacToeBox2.Size = new System.Drawing.Size(95, 102);
-            this.ticTacToeBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ticTacToeBox2.TabIndex = 1;
-            this.ticTacToeBox2.TabStop = false;
-            this.ticTacToeBox2.Click += new System.EventHandler(this.ClickedOnBoard);
-            // 
-            // ticTacToeBox1
-            // 
-            this.ticTacToeBox1.BackColor = System.Drawing.Color.Snow;
-            this.ticTacToeBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ticTacToeBox1.Location = new System.Drawing.Point(208, 291);
-            this.ticTacToeBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ticTacToeBox1.Name = "ticTacToeBox1";
-            this.ticTacToeBox1.Size = new System.Drawing.Size(95, 102);
-            this.ticTacToeBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ticTacToeBox1.TabIndex = 0;
-            this.ticTacToeBox1.TabStop = false;
-            this.ticTacToeBox1.Click += new System.EventHandler(this.ClickedOnBoard);
             // 
             // newGameButton
             // 
@@ -418,6 +280,158 @@
             this.amountBettingNumericUpDown.TabIndex = 33;
             this.amountBettingNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // player2PictureBox
+            // 
+            this.player2PictureBox.BackColor = System.Drawing.Color.Snow;
+            this.player2PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.player2PictureBox.Image = global::RockysTicTacToeGame.Properties.Resources.Vector;
+            this.player2PictureBox.Location = new System.Drawing.Point(579, 65);
+            this.player2PictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.player2PictureBox.Name = "player2PictureBox";
+            this.player2PictureBox.Size = new System.Drawing.Size(95, 102);
+            this.player2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.player2PictureBox.TabIndex = 25;
+            this.player2PictureBox.TabStop = false;
+            // 
+            // player1PictureBox
+            // 
+            this.player1PictureBox.BackColor = System.Drawing.Color.Snow;
+            this.player1PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.player1PictureBox.Image = global::RockysTicTacToeGame.Properties.Resources.Gru;
+            this.player1PictureBox.Location = new System.Drawing.Point(48, 65);
+            this.player1PictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.player1PictureBox.Name = "player1PictureBox";
+            this.player1PictureBox.Size = new System.Drawing.Size(95, 102);
+            this.player1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.player1PictureBox.TabIndex = 24;
+            this.player1PictureBox.TabStop = false;
+            // 
+            // ticTacToeBox7
+            // 
+            this.ticTacToeBox7.BackColor = System.Drawing.Color.Snow;
+            this.ticTacToeBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ticTacToeBox7.Location = new System.Drawing.Point(208, 65);
+            this.ticTacToeBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ticTacToeBox7.Name = "ticTacToeBox7";
+            this.ticTacToeBox7.Size = new System.Drawing.Size(95, 102);
+            this.ticTacToeBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ticTacToeBox7.TabIndex = 8;
+            this.ticTacToeBox7.TabStop = false;
+            this.ticTacToeBox7.Click += new System.EventHandler(this.ClickedOnBoard);
+            this.ticTacToeBox7.DoubleClick += new System.EventHandler(this.DoubleClickedOnBoard_DoubleClick);
+            // 
+            // ticTacToeBox8
+            // 
+            this.ticTacToeBox8.BackColor = System.Drawing.Color.Snow;
+            this.ticTacToeBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ticTacToeBox8.Location = new System.Drawing.Point(313, 65);
+            this.ticTacToeBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ticTacToeBox8.Name = "ticTacToeBox8";
+            this.ticTacToeBox8.Size = new System.Drawing.Size(95, 102);
+            this.ticTacToeBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ticTacToeBox8.TabIndex = 7;
+            this.ticTacToeBox8.TabStop = false;
+            this.ticTacToeBox8.Click += new System.EventHandler(this.ClickedOnBoard);
+            this.ticTacToeBox8.DoubleClick += new System.EventHandler(this.DoubleClickedOnBoard_DoubleClick);
+            // 
+            // ticTacToeBox9
+            // 
+            this.ticTacToeBox9.BackColor = System.Drawing.Color.Snow;
+            this.ticTacToeBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ticTacToeBox9.Location = new System.Drawing.Point(418, 65);
+            this.ticTacToeBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ticTacToeBox9.Name = "ticTacToeBox9";
+            this.ticTacToeBox9.Size = new System.Drawing.Size(95, 102);
+            this.ticTacToeBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ticTacToeBox9.TabIndex = 6;
+            this.ticTacToeBox9.TabStop = false;
+            this.ticTacToeBox9.Click += new System.EventHandler(this.ClickedOnBoard);
+            this.ticTacToeBox9.DoubleClick += new System.EventHandler(this.DoubleClickedOnBoard_DoubleClick);
+            // 
+            // ticTacToeBox4
+            // 
+            this.ticTacToeBox4.BackColor = System.Drawing.Color.Snow;
+            this.ticTacToeBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ticTacToeBox4.Location = new System.Drawing.Point(208, 178);
+            this.ticTacToeBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ticTacToeBox4.Name = "ticTacToeBox4";
+            this.ticTacToeBox4.Size = new System.Drawing.Size(95, 102);
+            this.ticTacToeBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ticTacToeBox4.TabIndex = 5;
+            this.ticTacToeBox4.TabStop = false;
+            this.ticTacToeBox4.Click += new System.EventHandler(this.ClickedOnBoard);
+            this.ticTacToeBox4.DoubleClick += new System.EventHandler(this.DoubleClickedOnBoard_DoubleClick);
+            // 
+            // ticTacToeBox5
+            // 
+            this.ticTacToeBox5.BackColor = System.Drawing.Color.Snow;
+            this.ticTacToeBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ticTacToeBox5.Location = new System.Drawing.Point(313, 178);
+            this.ticTacToeBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ticTacToeBox5.Name = "ticTacToeBox5";
+            this.ticTacToeBox5.Size = new System.Drawing.Size(95, 102);
+            this.ticTacToeBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ticTacToeBox5.TabIndex = 4;
+            this.ticTacToeBox5.TabStop = false;
+            this.ticTacToeBox5.Click += new System.EventHandler(this.ClickedOnBoard);
+            this.ticTacToeBox5.DoubleClick += new System.EventHandler(this.DoubleClickedOnBoard_DoubleClick);
+            // 
+            // ticTacToeBox6
+            // 
+            this.ticTacToeBox6.BackColor = System.Drawing.Color.Snow;
+            this.ticTacToeBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ticTacToeBox6.Location = new System.Drawing.Point(418, 178);
+            this.ticTacToeBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ticTacToeBox6.Name = "ticTacToeBox6";
+            this.ticTacToeBox6.Size = new System.Drawing.Size(95, 102);
+            this.ticTacToeBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ticTacToeBox6.TabIndex = 3;
+            this.ticTacToeBox6.TabStop = false;
+            this.ticTacToeBox6.Click += new System.EventHandler(this.ClickedOnBoard);
+            this.ticTacToeBox6.DoubleClick += new System.EventHandler(this.DoubleClickedOnBoard_DoubleClick);
+            // 
+            // ticTacToeBox3
+            // 
+            this.ticTacToeBox3.BackColor = System.Drawing.Color.Snow;
+            this.ticTacToeBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ticTacToeBox3.Location = new System.Drawing.Point(418, 291);
+            this.ticTacToeBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ticTacToeBox3.Name = "ticTacToeBox3";
+            this.ticTacToeBox3.Size = new System.Drawing.Size(95, 102);
+            this.ticTacToeBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ticTacToeBox3.TabIndex = 2;
+            this.ticTacToeBox3.TabStop = false;
+            this.ticTacToeBox3.Click += new System.EventHandler(this.ClickedOnBoard);
+            this.ticTacToeBox3.DoubleClick += new System.EventHandler(this.DoubleClickedOnBoard_DoubleClick);
+            // 
+            // ticTacToeBox2
+            // 
+            this.ticTacToeBox2.BackColor = System.Drawing.Color.Snow;
+            this.ticTacToeBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ticTacToeBox2.Location = new System.Drawing.Point(313, 291);
+            this.ticTacToeBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ticTacToeBox2.Name = "ticTacToeBox2";
+            this.ticTacToeBox2.Size = new System.Drawing.Size(95, 102);
+            this.ticTacToeBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ticTacToeBox2.TabIndex = 1;
+            this.ticTacToeBox2.TabStop = false;
+            this.ticTacToeBox2.Click += new System.EventHandler(this.ClickedOnBoard);
+            this.ticTacToeBox2.DoubleClick += new System.EventHandler(this.DoubleClickedOnBoard_DoubleClick);
+            // 
+            // ticTacToeBox1
+            // 
+            this.ticTacToeBox1.BackColor = System.Drawing.Color.Snow;
+            this.ticTacToeBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ticTacToeBox1.Location = new System.Drawing.Point(208, 291);
+            this.ticTacToeBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ticTacToeBox1.Name = "ticTacToeBox1";
+            this.ticTacToeBox1.Size = new System.Drawing.Size(95, 102);
+            this.ticTacToeBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ticTacToeBox1.TabIndex = 0;
+            this.ticTacToeBox1.TabStop = false;
+            this.ticTacToeBox1.Click += new System.EventHandler(this.ClickedOnBoard);
+            this.ticTacToeBox1.DoubleClick += new System.EventHandler(this.DoubleClickedOnBoard_DoubleClick);
+            // 
             // TicTacToeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -460,7 +474,9 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "TicTacToeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TicTacToeForm";
+            ((System.ComponentModel.ISupportInitialize)(this.amountBettingNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player1PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticTacToeBox7)).EndInit();
@@ -472,7 +488,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ticTacToeBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticTacToeBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticTacToeBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.amountBettingNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

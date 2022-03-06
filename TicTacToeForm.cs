@@ -18,7 +18,6 @@ namespace RockysTicTacToeGame
         private bool player2Turn = false;
         private readonly SkillsModel player1Skills = new SkillsModel();
         private readonly SkillsModel player2Skills = new SkillsModel();
-        private int[,] score = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
         private int[,] player1StartGameScore = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
         private int[,] player2StartGameScore = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
 
@@ -42,7 +41,17 @@ namespace RockysTicTacToeGame
         {
 
             PictureBox p = sender as PictureBox;
+
+
             if (p.Image != null)
+            {
+                return;
+            }
+            if (overRideP1Button.BackColor == Color.LightGreen && p.Image == null)
+            {
+                return;
+            }
+            if (overRideP2Button.BackColor == Color.LightGreen && p.Image == null)
             {
                 return;
             }
@@ -67,6 +76,46 @@ namespace RockysTicTacToeGame
                 return;
             }
         }
+
+        private void DoubleClickedOnBoard_DoubleClick(object sender, EventArgs e)
+        {
+
+            PictureBox p = sender as PictureBox;
+            if (p == null)
+            {
+                return;
+
+            }
+            if (overRideP2Button.BackColor != Color.LightGreen && p.Image != player2PictureBox.Image)
+            {
+                return;
+            }
+            if (overRideP1Button.BackColor != Color.LightGreen && p.Image != player1PictureBox.Image)
+            {
+                return;
+            }
+
+
+            if (overRideP2Button.BackColor == Color.LightGreen && p.Image != player2PictureBox.Image)
+            {
+                OverRide(p);
+                DotProductForTheWin();
+
+
+                return;
+            }
+            if (overRideP1Button.BackColor == Color.LightGreen && p.Image != player1PictureBox.Image)
+            {
+                OverRide(p);
+                DotProductForTheWin();
+                return;
+            }
+            return;
+        }
+
+
+
+        #region Useful Methods 
         private void UpdateScoreBoard()
         {
             int j = 0;
@@ -102,11 +151,9 @@ namespace RockysTicTacToeGame
 
             }
         }
-
-        private void FlameThrowerGru()
+        private void KeyboardDanceVector()
         {
-
-            FlameThrowerGru fire = new FlameThrowerGru();
+            VectorKeyboardForm keyboard = new VectorKeyboardForm();
             if (player2Skills.ClearBoard == true)
             {
                 MessageBox.Show($"{player2Label.Text} you already used this Skill!");
@@ -115,20 +162,26 @@ namespace RockysTicTacToeGame
             else
             {
                 ClearBoard();
-                fire.ShowDialog();
+                keyboard.ShowDialog();
                 player2Skills.ClearBoard = true;
             }
-
         }
 
-        private void clearBoardP2Button_Click(object sender, EventArgs e)
+        private void FlameThrowerGru()
         {
-            if (player2Turn || player1Turn)
+
+            FlameThrowerGru fire = new FlameThrowerGru();
+            if (player1Skills.ClearBoard == true)
             {
-                FlameThrowerGru();
-                clearBoardP2Button.BackColor = Color.LightPink;
+                MessageBox.Show($"{player2Label.Text} you already used this Skill!");
+                return;
             }
-            return;
+            else
+            {
+                ClearBoard();
+                fire.ShowDialog();
+                player1Skills.ClearBoard = true;
+            }
 
         }
 
@@ -168,10 +221,6 @@ namespace RockysTicTacToeGame
             Array.Clear(player2StartGameScore, 0, player2StartGameScore.Length);
         }
 
-        private void newGameButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         /// <summary>
         /// This is the Message Box popup if a win case is hit while using WinMessageBoxForDotProductWin.
@@ -184,7 +233,7 @@ namespace RockysTicTacToeGame
                 if (countScoreBest2of3_P1 == 2)
                 {
                     MessageBox.Show($"{player1Label.Text} Wins!");
-                    UpdateThePlayerModelDataBetter(updatePlayer1);
+                    UpdateThePlayerModelData(updatePlayer1);
                     this.Close();
                     return;
                 }
@@ -202,7 +251,7 @@ namespace RockysTicTacToeGame
                 if (countScoreBest2of3_P2 == 2)
                 {
                     MessageBox.Show($"{player2Label.Text} Wins!");
-                    UpdateThePlayerModelDataBetter(updatePlayer2);
+                    UpdateThePlayerModelData(updatePlayer2);
                     this.Close();
                     return;
                 }
@@ -216,8 +265,8 @@ namespace RockysTicTacToeGame
             }
 
         }
-        
-        
+
+
         /// <summary>
         /// Work in progress to a soluiton that would solve any size matrix. That Currently works for a 3x3.
         /// </summary>
@@ -244,28 +293,19 @@ namespace RockysTicTacToeGame
 
                 // Clean this up with one more for loop for the j's
 
-                winDiagRight[0] = IdentityMatrix[i] * playerGameScore[0, 2];
-                winDiagRight[1] = IdentityMatrix[i] * playerGameScore[1, 1];
-                winDiagRight[2] = IdentityMatrix[i] * playerGameScore[2, 0];
+                //winDiagRight[0] = IdentityMatrix[i] * playerGameScore[0, 2];
+                //winDiagRight[1] = IdentityMatrix[i] * playerGameScore[1, 1];
+                //winDiagRight[2] = IdentityMatrix[i] * playerGameScore[2, 0];
 
+                int x = 0;
+                int y = IdentityMatrix.Length - 1;
                 for (int j = 0; j < IdentityMatrix.Length; j++)
                 {
                     winDiagLeft[j] = IdentityMatrix[i] * playerGameScore[j, j];
-
+                    winDiagRight[j] = IdentityMatrix[i] * playerGameScore[x++, y--];
                     winHor[j] = IdentityMatrix[i] * playerGameScore[i, j];
                     winVert[j] = IdentityMatrix[i] * playerGameScore[j, i];
                 }
-
-                //winDiagLeft[1] = IdentityMatrix[i] * playerGameScore[j, j];
-                //winDiagRight[1] = IdentityMatrix[i] * playerGameScore[1,1];// Hard Coded need to comeback to this
-                //winHor[1] = IdentityMatrix[i] * playerGameScore[i, j];
-                //winVert[1] = IdentityMatrix[i] * playerGameScore[j, i];
-                //j++;
-
-                //winDiagLeft[2] = IdentityMatrix[i] * playerGameScore[j, j];
-                //winDiagRight[2] = IdentityMatrix[i] * playerGameScore[2, 0];// HardCoded Need to comeback to this
-                //winHor[2] = IdentityMatrix[i] * playerGameScore[i, j];
-                //winVert[2] = IdentityMatrix[i] * playerGameScore[j, i];
 
                 int horizontalWin = winHor[0] + winHor[1] + winHor[2];
                 int verticalWin = winVert[0] + winVert[1] + winVert[2];
@@ -284,7 +324,7 @@ namespace RockysTicTacToeGame
         /// <summary>
         /// Updates the player model the better way!
         /// </summary>
-        private void UpdateThePlayerModelDataBetter(PlayerModel p)
+        private void UpdateThePlayerModelData(PlayerModel p)
         {
             p.Wins++;
             p.GamesPlayed++;
@@ -293,13 +333,111 @@ namespace RockysTicTacToeGame
             GlobalConfig.Connection.UpdatePlayer(p);
         }
 
+        private void OverRide(PictureBox p)
+        {
+            if (player1Skills.OverRide && player1Turn)
+            {
+                MessageBox.Show($"{player1Label.Text} you already used this skill");
+                return;
+            }
+            if (player2Skills.OverRide && player2Turn)
+            {
+                MessageBox.Show($"{player2Label.Text} you already used this skill");
+                return;
+            }
+            if (player1Turn && !player1Skills.OverRide)
+            {
+                p.Image = player1PictureBox.Image;
+                player1Skills.OverRide = true;
+                PlayerTurnFunction();
+                overRideP1Button.BackColor = Color.LightPink;
+            }
+            else
+            {
+                p.Image = player2PictureBox.Image;
+                player2Skills.OverRide = true;
+                PlayerTurnFunction();
+                overRideP2Button.BackColor = Color.LightPink;
+            }
+            return;
+        }
 
+        #endregion
+
+
+
+        #region Buttons 
+        private void newGameButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void clearBoardP1Button_Click(object sender, EventArgs e)
+        {
+            if (player1Turn)
+            {
+                FlameThrowerGru();
+                clearBoardP1Button.BackColor = Color.LightPink;
+            }
+            return;
+        }
+
+        private void backToBackP1Button_Click(object sender, EventArgs e)
+        {
+            if (player2Turn)
+            {
+                PlayerTurnFunction();
+                backToBackP1Button.BackColor = Color.LightPink;
+            }
+            return;
+        }
+
+        private void overRideP1Button_Click(object sender, EventArgs e)
+        {
+            if (player1Turn && !(overRideP1Button.BackColor == Color.LightGreen))
+            {
+                MessageBox.Show($"Double Click the box you wish to chage.");
+                overRideP1Button.BackColor = Color.LightGreen;
+            }
+            return;
+        }
+
+        private void backToBackP2Button_Click(object sender, EventArgs e)
+        {
+            if (player1Turn)
+            {
+                PlayerTurnFunction();
+                backToBackP2Button.BackColor = Color.LightPink;
+            }
+            return;
+        }
+        private void clearBoardP2Button_Click(object sender, EventArgs e)
+        {
+            if (player2Turn)
+            {
+                KeyboardDanceVector();
+                ClearBoard();
+                clearBoardP2Button.BackColor = Color.LightPink;
+            }
+            return;
+
+        }
+        private void overRideP2Button_Click(object sender, EventArgs e)
+        {
+            if (player2Turn && !(overRideP2Button.BackColor == Color.LightGreen))
+            {
+                MessageBox.Show($"Double Click the box you wish to chage.");
+                overRideP2Button.BackColor = Color.LightGreen;
+            }
+            return;
+        }
+        #endregion
 
 
 
 
         #region Not Actually using these methods anymore but I don't want to delete them yet.
-        private void UpdateThePlayerModelData()
+        private void UpdateThePlayerModelDataOld()
         {
             foreach (PlayerModel p in dudeFigureThisOut)
             {
@@ -423,6 +561,10 @@ namespace RockysTicTacToeGame
             }
         }
 
+
+
         #endregion
+
+
     }
 }
