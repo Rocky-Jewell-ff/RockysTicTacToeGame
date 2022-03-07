@@ -113,7 +113,72 @@ namespace RockysTicTacToeGame
             return;
         }
 
+        #region Popups
+        private void KeyboardDanceVector()
+        {
+            VectorKeyboardForm keyboard = new VectorKeyboardForm();
+            if (player2Skills.ClearBoard == true)
+            {
+                MessageBox.Show($"{player2Label.Text} you already used this Skill!");
+                return;
+            }
+            else
+            {
+                ClearBoard();
+                keyboard.ShowDialog();
+                player2Skills.ClearBoard = true;
+            }
+        }
 
+        private void FlameThrowerGru()
+        {
+
+            FlameThrowerGru fire = new FlameThrowerGru();
+            if (player1Skills.ClearBoard == true)
+            {
+                MessageBox.Show($"{player2Label.Text} you already used this Skill!");
+                return;
+            }
+            else
+            {
+                ClearBoard();
+                fire.ShowDialog();
+                player1Skills.ClearBoard = true;
+            }
+
+        }
+        private void FreezeVector()
+        {
+
+            FreezeVectorForm freeze = new FreezeVectorForm();
+            if (player1Skills.BackToBack == true)
+            {
+                MessageBox.Show($"{player2Label.Text} you already used this Skill!");
+                return;
+            }
+            else
+            {
+                freeze.ShowDialog();
+                player1Skills.BackToBack = true;
+            }
+
+        }
+        private void GruEatenByAShark()
+        {
+            GruEatenBySharkForm shark = new GruEatenBySharkForm();
+
+            if (player2Skills.BackToBack == true)
+            {
+                MessageBox.Show($"{player2Label.Text} you already used this Skill!");
+                return;
+            }
+            else
+            {
+                shark.ShowDialog();
+                player2Skills.BackToBack = true;
+            }
+        }
+        #endregion
 
         #region Useful Methods 
         private void UpdateScoreBoard()
@@ -151,39 +216,8 @@ namespace RockysTicTacToeGame
 
             }
         }
-        private void KeyboardDanceVector()
-        {
-            VectorKeyboardForm keyboard = new VectorKeyboardForm();
-            if (player2Skills.ClearBoard == true)
-            {
-                MessageBox.Show($"{player2Label.Text} you already used this Skill!");
-                return;
-            }
-            else
-            {
-                ClearBoard();
-                keyboard.ShowDialog();
-                player2Skills.ClearBoard = true;
-            }
-        }
 
-        private void FlameThrowerGru()
-        {
 
-            FlameThrowerGru fire = new FlameThrowerGru();
-            if (player1Skills.ClearBoard == true)
-            {
-                MessageBox.Show($"{player2Label.Text} you already used this Skill!");
-                return;
-            }
-            else
-            {
-                ClearBoard();
-                fire.ShowDialog();
-                player1Skills.ClearBoard = true;
-            }
-
-        }
 
         private void PlayerTurnFunction()
         {
@@ -347,6 +381,10 @@ namespace RockysTicTacToeGame
             }
             if (player1Turn && !player1Skills.OverRide)
             {
+                GruWithHoseForm hose = new GruWithHoseForm();
+
+                hose.ShowDialog();
+
                 p.Image = player1PictureBox.Image;
                 player1Skills.OverRide = true;
                 PlayerTurnFunction();
@@ -354,6 +392,8 @@ namespace RockysTicTacToeGame
             }
             else
             {
+                VectorHitWithASquidForm squid = new VectorHitWithASquidForm();
+                squid.ShowDialog();
                 p.Image = player2PictureBox.Image;
                 player2Skills.OverRide = true;
                 PlayerTurnFunction();
@@ -386,6 +426,7 @@ namespace RockysTicTacToeGame
         {
             if (player2Turn)
             {
+                FreezeVector();
                 PlayerTurnFunction();
                 backToBackP1Button.BackColor = Color.LightPink;
             }
@@ -408,6 +449,7 @@ namespace RockysTicTacToeGame
             {
                 PlayerTurnFunction();
                 backToBackP2Button.BackColor = Color.LightPink;
+                GruEatenByAShark();
             }
             return;
         }

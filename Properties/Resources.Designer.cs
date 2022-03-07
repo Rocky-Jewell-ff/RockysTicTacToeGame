@@ -83,6 +83,16 @@ namespace RockysTicTacToeGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FreezeVector {
+            get {
+                object obj = ResourceManager.GetObject("FreezeVector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gru {
             get {
                 object obj = ResourceManager.GetObject("Gru", resourceCulture);
@@ -93,9 +103,39 @@ namespace RockysTicTacToeGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GruEatenByShark {
+            get {
+                object obj = ResourceManager.GetObject("GruEatenByShark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HitWithASquid {
+            get {
+                object obj = ResourceManager.GetObject("HitWithASquid", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Vector {
             get {
                 object obj = ResourceManager.GetObject("Vector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WaterHoseGru {
+            get {
+                object obj = ResourceManager.GetObject("WaterHoseGru", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -61,11 +61,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FlameThrowerGru.cs">
+    <Compile Include="PopUpForms\FlameThrowerGru.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FlameThrowerGru.Designer.cs">
+    <Compile Include="PopUpForms\FlameThrowerGru.Designer.cs">
       <DependentUpon>FlameThrowerGru.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopUpForms\FreezeVectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUpForms\FreezeVectorForm.Designer.cs">
+      <DependentUpon>FreezeVectorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopUpForms\GruEatenBySharkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUpForms\GruEatenBySharkForm.Designer.cs">
+      <DependentUpon>GruEatenBySharkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopUpForms\GruWithHoseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUpForms\GruWithHoseForm.Designer.cs">
+      <DependentUpon>GruWithHoseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,14 +99,29 @@
     <Compile Include="TicTacToeForm.Designer.cs">
       <DependentUpon>TicTacToeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="VectorKeyboardForm.cs">
+    <Compile Include="PopUpForms\VectorHitWithASquidForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VectorKeyboardForm.Designer.cs">
+    <Compile Include="PopUpForms\VectorHitWithASquidForm.Designer.cs">
+      <DependentUpon>VectorHitWithASquidForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopUpForms\VectorKeyboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUpForms\VectorKeyboardForm.Designer.cs">
       <DependentUpon>VectorKeyboardForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FlameThrowerGru.resx">
+    <EmbeddedResource Include="PopUpForms\FlameThrowerGru.resx">
       <DependentUpon>FlameThrowerGru.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUpForms\FreezeVectorForm.resx">
+      <DependentUpon>FreezeVectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUpForms\GruEatenBySharkForm.resx">
+      <DependentUpon>GruEatenBySharkForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUpForms\GruWithHoseForm.resx">
+      <DependentUpon>GruWithHoseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -106,7 +139,10 @@
     <EmbeddedResource Include="TicTacToeForm.resx">
       <DependentUpon>TicTacToeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VectorKeyboardForm.resx">
+    <EmbeddedResource Include="PopUpForms\VectorHitWithASquidForm.resx">
+      <DependentUpon>VectorHitWithASquidForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUpForms\VectorKeyboardForm.resx">
       <DependentUpon>VectorKeyboardForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -151,6 +187,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\butt-rubbing-keyboard.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HitWithASquid.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GruEatenByShark.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WaterHoseGru.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FreezeVector.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
