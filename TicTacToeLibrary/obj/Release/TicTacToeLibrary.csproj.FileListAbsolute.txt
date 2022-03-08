@@ -1,0 +1,6 @@
+C:\Users\Rocky Jewell\Desktop\Rocky's Folder\Practice Code\Console_Practice\RockysTicTacToeGame\TicTacToeLibrary\bin\Release\TicTacToeLibrary.dll
+C:\Users\Rocky Jewell\Desktop\Rocky's Folder\Practice Code\Console_Practice\RockysTicTacToeGame\TicTacToeLibrary\bin\Release\TicTacToeLibrary.pdb
+C:\Users\Rocky Jewell\Desktop\Rocky's Folder\Practice Code\Console_Practice\RockysTicTacToeGame\TicTacToeLibrary\obj\Release\TicTacToeLibrary.csproj.AssemblyReference.cache
+C:\Users\Rocky Jewell\Desktop\Rocky's Folder\Practice Code\Console_Practice\RockysTicTacToeGame\TicTacToeLibrary\obj\Release\TicTacToeLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Rocky Jewell\Desktop\Rocky's Folder\Practice Code\Console_Practice\RockysTicTacToeGame\TicTacToeLibrary\obj\Release\TicTacToeLibrary.dll
+C:\Users\Rocky Jewell\Desktop\Rocky's Folder\Practice Code\Console_Practice\RockysTicTacToeGame\TicTacToeLibrary\obj\Release\TicTacToeLibrary.pdb
